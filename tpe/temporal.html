@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Nacionalidad</th>
+                <th>Especialista</th>
+                <th>Altura</th>
+                <th>Edad</th>
+                <th>Eliminar</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href=""></a></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+    <h2>Agregar gimnasta</h2>
+    <form action="addGymnast" method="POST">
+        <input type="text" name="nombre" placeholder="nombre">
+        <input type="text" name="nacionalidad" placeholder="nacionalidad">
+        <label>Especialista en </label>
+        <select name="aparato">
+            <option value="Suelo">Suelo</option>
+            <option value="Arzones">Arzones</option>
+            <option value="Anillas">Anillas</option>
+            <option value="Salto">Salto</option>
+            <option value="Paralelas">Paralelas</option>
+            <option value="Barra Fija">Barra Fija</option>
+            <option value="All-Around">All-Around</option>
+        </select>
+        <input type="text" name="especialista" placeholder="especialista en">
+        <input type="text" name="altura" placeholder="altura">
+        <input type="number" name="edad" placeholder="edad">
+        <input type="submit">
+    </form>
+
+    <a href="viewAparatos">Ver Listado de Aparatos</a>
+    <h1></h1>
+    <ul>
+        <li></li>
+        
+    </ul>
+
+    <h2>Listar gimnastas por Aparato</h2>
+    <form action="viewGymnastByAparato" method="POST">
+        <input type="text" name="aparato" placeholder="seleccione aparato ">
+        <input type="submit">
+    </form>
+
+    <form action=""></form>
+
+    <h2>Agregar Aparato</h2>
+    <form action="addAparato" method="POST">
+
+        <input type="text" name="nombre" placeholder="nombre Aparato">
+        <textarea name="descripcion" cols="30" rows="10" placeholder="Descripcion aparato"></textarea>
+        <input type="text" name="orden_olimpico" placeholder="orden olimpico">
+    </form>
+</body>
+</html>
