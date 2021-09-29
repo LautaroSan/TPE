@@ -14,9 +14,9 @@ class GymnastModel{
         return $gymnasts;
     } 
 
-    function insertGymnast($nombre, $nac, $esp,$id, $alt,$edad){
-        $sentencia = $this->db->prepare("INSERT INTO gimnastas(nombre, nacionalidad, aparato, id_aparato, altura, edad) VALUES(?, ?, ?, ?, ?,?)");
-        $sentencia->execute(array($nombre,$nac,$esp,$id, $alt, $edad ));
+    function insertGymnast($nombre, $nac,$id, $alt,$edad){
+        $sentencia = $this->db->prepare("INSERT INTO gimnastas(nombre, nacionalidad, id_aparato, altura, edad) VALUES(?, ?, ?, ?,?)");
+        $sentencia->execute(array($nombre,$nac,$id, $alt, $edad ));
     }
 
     function deleteGymnastFromDB($id){
@@ -36,15 +36,21 @@ class GymnastModel{
         $aparatos = $query->fetchAll(PDO::FETCH_OBJ);
         return $aparatos;
     }
-    function getGymnastsByAparato($aparato){
-        $query = $this->db->prepare("select * from gimnastas where aparato = ?");
-        $query->execute(array($aparato));
+    function getAparato($id){
+        $query = $this->db->prepare("select * from aparatos WHERE id=?");
+        $query->execute(array($id));
+        $aparato = $query->fetch(PDO::FETCH_OBJ);
+        return $aparato;
+    }
+    function getGymnastsByAparato($id){
+        $query = $this->db->prepare("select * from gimnastas where id_aparato = ?");
+        $query->execute(array($id));
         $gymnasts = $query->fetchAll(PDO::FETCH_OBJ);
         return $gymnasts;
     }
-    function editGymnast($nombre, $nac, $esp,$idAparato, $alt,$edad, $id){
-        $query = $this->db->prepare("update gimnastas set nombre = ? , nacionalidad = ? , aparato = ? , id_aparato = ? , altura = ? , edad = ? where id_gimnasta = ? ");
-        $query->execute(array($nombre,$nac,$esp,$idAparato,$alt,$edad,$id));
+    function editGymnast($nombre, $nac,$idAparato, $alt,$edad, $id){
+        $query = $this->db->prepare("update gimnastas set nombre = ? , nacionalidad = ? , id_aparato = ? , altura = ? , edad = ? where id_gimnasta = ? ");
+        $query->execute(array($nombre,$nac,$idAparato,$alt,$edad,$id));
 
     }
 }

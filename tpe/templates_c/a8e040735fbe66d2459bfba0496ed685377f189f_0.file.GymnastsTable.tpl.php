@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-09-23 14:40:59
+/* Smarty version 3.1.39, created on 2021-09-29 22:51:16
   from 'C:\xampp\htdocs\web2\tpe\templates\GymnastsTable.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_614c75dba7c4a6_54800650',
+  'unifunc' => 'content_6154d1c47e7bc7_17326083',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a8e040735fbe66d2459bfba0496ed685377f189f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\tpe\\templates\\GymnastsTable.tpl',
-      1 => 1632400858,
+      1 => 1632948362,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_614c75dba7c4a6_54800650 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6154d1c47e7bc7_17326083 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <h1><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
@@ -34,7 +34,6 @@ $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_sm
             <tr>
                 <th>Nombre</th>
                 <th>Nacionalidad</th>
-                <th>Especialidad (Aparato)</th>
                 <th>ID Especialidad</th>
                 <th>Altura</th>
                 <th>Edad</th>
@@ -54,8 +53,6 @@ $_smarty_tpl->tpl_vars['gymnast']->do_else = false;
 "><?php echo $_smarty_tpl->tpl_vars['gymnast']->value->nombre;?>
 </a></td>
                             <td><?php echo $_smarty_tpl->tpl_vars['gymnast']->value->nacionalidad;?>
-</td>
-                            <td><?php echo $_smarty_tpl->tpl_vars['gymnast']->value->aparato;?>
 </td>
                             <td><?php echo $_smarty_tpl->tpl_vars['gymnast']->value->id_aparato;?>
 </td>
@@ -78,16 +75,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <form action="addGymnast" method="POST">
         <input type="text" name="nombre" placeholder="nombre y apellido">
         <input type="text" name="nacionalidad" placeholder="nacionalidad">
-        <label>Especialista en </label>
-        <select name="especialista">
-            <option value="All-Around">All-Around</option>
-            <option value="Suelo">Suelo</option>
-            <option value="Arzones">Arzones</option>
-            <option value="Anillas">Anillas</option>
-            <option value="Salto">Salto</option>
-            <option value="Paralelas">Paralelas</option>
-            <option value="Barra Fija">Barra Fija</option>   
-        </select>
         <label>ID Especialidad </label>
         <select name="id_aparato">
             <option value="1">1 (All-Around)</option>
@@ -107,14 +94,14 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
     <h2>Listar gimnastas por Aparato</h2>
     <form action="viewGymnastByAparato" method="POST">
-        <select name="especialista">
-            <option value="All-Around">1(All-Around) </option>
-            <option value="Suelo">2(Suelo)</option>
-            <option value="Arzones">3(Arzones)</option>
-            <option value="Anillas">4(Anillas)</option>
-            <option value="Salto">5(Salto)</option>
-            <option value="Paralelas">6(Paralelas)</option>
-            <option value="Barra Fija">7(Barra Fija)</option>
+        <select name="id_aparato">
+            <option value="1">1(All-Around) </option>
+            <option value="2">2(Suelo)</option>
+            <option value="3">3(Arzones)</option>
+            <option value="4">4(Anillas)</option>
+            <option value="5">5(Salto)</option>
+            <option value="6">6(Paralelas)</option>
+            <option value="7">7(Barra Fija)</option>
         </select>
         <input type="submit">
     </form>

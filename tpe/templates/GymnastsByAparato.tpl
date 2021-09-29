@@ -1,6 +1,6 @@
 {include file= 'header.tpl'}
 
-<h1>{$titulo}{$aparato}</h1>
+<h1>{$titulo}{$aparato->nombre}</h1>
 
     <ul>
         {foreach from=$gymnasts item=$gymnast}

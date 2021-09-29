@@ -19,8 +19,8 @@ class GymnastController{
 
     function addGymnast(){
         if(!empty($_POST)){
-            if($_POST['nombre']!="" && $_POST['nacionalidad']!=""  && $_POST['especialista']!=""  && ($_POST['altura']!="" && $_POST['altura'] >0)  && ($_POST['edad']!="" && $_POST['edad']>0) ){
-                $this->model->insertGymnast($_POST['nombre'], $_POST['nacionalidad'], $_POST['especialista'], $_POST['id_aparato'],$_POST['altura'],$_POST['edad']);
+            if($_POST['nombre']!="" && $_POST['nacionalidad']!=""  && ($_POST['altura']!="" && $_POST['altura'] >0)  && ($_POST['edad']!="" && $_POST['edad']>0) ){
+                $this->model->insertGymnast($_POST['nombre'], $_POST['nacionalidad'], $_POST['id_aparato'],$_POST['altura'],$_POST['edad']);
                 
             }
             $this->view->showHomeLocation();
@@ -42,8 +42,9 @@ class GymnastController{
     }
     function viewGymnastByAparato(){
         if(!empty($_POST)){
-            $gymnasts = $this->model-> getGymnastsByAparato($_POST['especialista']);
-            $this->view->showGymnastsByAparato($gymnasts, $_POST['especialista']);
+            $gymnasts = $this->model-> getGymnastsByAparato($_POST['id_aparato']);
+            $aparato = $this->model-> getAparato($_POST['id_aparato']);
+            $this->view->showGymnastsByAparato($gymnasts, $aparato);
         }
         
     }
@@ -55,8 +56,8 @@ class GymnastController{
     function editGymnast(){
         var_dump($_POST);
         if(!empty($_POST)){
-            if($_POST['nombre']!="" && $_POST['nacionalidad']!=""  && $_POST['especialista']!="" && $_POST['id_aparato'] !=""  && ($_POST['altura']!="" && $_POST['altura'] >0)  && ($_POST['edad']!="" && $_POST['edad']>0) ){
-                $this->model->editGymnast($_POST['nombre'], $_POST['nacionalidad'], $_POST['especialista'],$_POST['id_aparato'],$_POST['altura'],$_POST['edad'], $_POST['id_gimnasta']);
+            if($_POST['nombre']!="" && $_POST['nacionalidad']!=""  && $_POST['id_aparato'] !=""  && ($_POST['altura']!="" && $_POST['altura'] >0)  && ($_POST['edad']!="" && $_POST['edad']>0) ){
+                $this->model->editGymnast($_POST['nombre'], $_POST['nacionalidad'],$_POST['id_aparato'],$_POST['altura'],$_POST['edad'], $_POST['id_gimnasta']);
                 
             }
             $this->view->showHomeLocation();
