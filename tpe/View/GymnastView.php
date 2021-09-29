@@ -21,7 +21,7 @@ class GymnastView {
      }
 
      function showAparatos($aparatos){
-        $this->smarty->assign('titulo', 'Lista de Especialidades');
+        $this->smarty->assign('titulo', 'Lista de Aparatos');
         $this->smarty->assign('aparatos', $aparatos);
         $this->smarty->display('templates/AparatosList.tpl');
      }

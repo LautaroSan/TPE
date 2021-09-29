@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-09-29 22:51:16
+/* Smarty version 3.1.39, created on 2021-09-29 23:21:41
   from 'C:\xampp\htdocs\web2\tpe\templates\GymnastsTable.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6154d1c47e7bc7_17326083',
+  'unifunc' => 'content_6154d8e5025cf9_97099945',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a8e040735fbe66d2459bfba0496ed685377f189f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\tpe\\templates\\GymnastsTable.tpl',
-      1 => 1632948362,
+      1 => 1632950499,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_6154d1c47e7bc7_17326083 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6154d8e5025cf9_97099945 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <h1><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
@@ -34,7 +34,7 @@ $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_sm
             <tr>
                 <th>Nombre</th>
                 <th>Nacionalidad</th>
-                <th>ID Especialidad</th>
+                <th>ID Aparato</th>
                 <th>Altura</th>
                 <th>Edad</th>
                 <th>Eliminar</th>
@@ -75,7 +75,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <form action="addGymnast" method="POST">
         <input type="text" name="nombre" placeholder="nombre y apellido">
         <input type="text" name="nacionalidad" placeholder="nacionalidad">
-        <label>ID Especialidad </label>
+        <label>ID Aparato </label>
         <select name="id_aparato">
             <option value="1">1 (All-Around)</option>
             <option value="2">2(Suelo)</option>
@@ -90,7 +90,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         <input type="submit">
     </form>
 
-    <a href="viewAparatos">Ver Listado de Especialidades</a>
+    <a href="viewAparatos">Ver Listado de Aparatos</a>
 
     <h2>Listar gimnastas por Aparato</h2>
     <form action="viewGymnastByAparato" method="POST">

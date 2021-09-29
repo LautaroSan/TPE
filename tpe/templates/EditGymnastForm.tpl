@@ -8,7 +8,7 @@
         <input type="text" name="nombre" value="{$gymnast->nombre}" >
         <label >Nacionalidad:</label>
         <input type="text" name="nacionalidad" value="{$gymnast->nacionalidad}">
-        <label>ID Especialidad</label>
+        <label>ID Aparato</label>
         <select name="id_aparato">
             <option value="{$gymnast->id_aparato}" selected >{$gymnast->id_aparato}</option>
             <option value="1">1 (All-Around)</option>

@@ -7,7 +7,7 @@
             <tr>
                 <th>Nombre</th>
                 <th>Nacionalidad</th>
-                <th>ID Especialidad</th>
+                <th>ID Aparato</th>
                 <th>Altura</th>
                 <th>Edad</th>
                 <th>Eliminar</th>
@@ -33,7 +33,7 @@
     <form action="addGymnast" method="POST">
         <input type="text" name="nombre" placeholder="nombre y apellido">
         <input type="text" name="nacionalidad" placeholder="nacionalidad">
-        <label>ID Especialidad </label>
+        <label>ID Aparato </label>
         <select name="id_aparato">
             <option value="1">1 (All-Around)</option>
             <option value="2">2(Suelo)</option>
@@ -48,7 +48,7 @@
         <input type="submit">
     </form>
 
-    <a href="viewAparatos">Ver Listado de Especialidades</a>
+    <a href="viewAparatos">Ver Listado de Aparatos</a>
 
     <h2>Listar gimnastas por Aparato</h2>
     <form action="viewGymnastByAparato" method="POST">
