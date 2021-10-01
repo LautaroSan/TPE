@@ -17,7 +17,7 @@
             <option value="4">4(Anillas)</option>
             <option value="5">5(Salto)</option>
             <option value="6">6(Paralelas)</option>
-            <option value="7 Fija">7(Barra Fija)</option>    
+            <option value="10">10(Barra Fija)</option>    
         </select>
         <label>Altura: </label>
         <input type="text" name="altura" value="{$gymnast->altura}">
