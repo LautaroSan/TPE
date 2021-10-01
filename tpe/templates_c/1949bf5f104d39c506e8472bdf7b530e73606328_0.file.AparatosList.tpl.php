@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-09-22 22:21:31
+/* Smarty version 3.1.39, created on 2021-10-01 19:07:49
   from 'C:\xampp\htdocs\web2\tpe\templates\AparatosList.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_614b904bf04259_41818587',
+  'unifunc' => 'content_61574065e0b171_66166074',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1949bf5f104d39c506e8472bdf7b530e73606328' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\tpe\\templates\\AparatosList.tpl',
-      1 => 1632342089,
+      1 => 1633108056,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_614b904bf04259_41818587 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61574065e0b171_66166074 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -46,7 +46,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 
 
- <a href="home" > Volver </a>
+ <a href="login" > Volver </a>
 
 <?php $_smarty_tpl->_subTemplateRender('file:templates/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 }

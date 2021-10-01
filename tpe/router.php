@@ -1,6 +1,8 @@
 <?php
 require_once "Controller/GymnastController.php";
 require_once "Controller/AparatosController.php";
+require_once "Controller/LoginController.php";
+
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -9,35 +11,59 @@ define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 } else {
-    $action = 'home'; // acción por defecto si no envían
+    $action = 'login'; // acción por defecto si no envían
 }
 
 $params = explode('/', $action);
 
 $gymnastController = new GymnastController();
 $aparatosController = new AparatosController();
+$loginController = new LoginController();
 
 
 // determina que camino seguir según la acción
 switch ($params[0]) {
-    case 'home': 
-        $gymnastController->showHome(); 
-        $aparatosController->showHome();
+    case 'login': 
+        $loginController->showLogin();
         break;
-    case 'addGymnast': 
-        $gymnastController->addGymnast(); 
+    case 'verify': 
+        $loginController->verifyLogin();
         break;
-    case 'deleteGymnast': 
-        $gymnastController->deleteGymnast($params[1]); 
+    case 'logout': 
+        $loginController->logout();
+        break;
+    case 'showRegisterForm': 
+        $loginController->showRegisterForm();
+        break;
+    case 'register': 
+        $loginController->register();
+        break;
+    case 'verListaPublica': 
+        $gymnastController->showGymnastsList();
         break;
     case 'viewGymnast': 
         $gymnastController->viewGymnast($params[1]); 
         break;
     case 'viewAparatos': 
-        $gymnastController->viewAparatos(); 
+        $aparatosController->showAparatosPublico(); 
         break;
     case 'viewGymnastByAparato': 
         $gymnastController->viewGymnastByAparato(); 
+        break;
+    case 'home': 
+        $gymnastController->showHome();
+        break;
+    case 'administrarGymnasts':
+        $gymnastController->showGymnasts(); 
+        break;
+    case 'administrarAparatos':
+        $aparatosController->showAparatos(); 
+        break;    
+    case 'addGymnast': 
+        $gymnastController->addGymnast(); 
+        break;
+    case 'deleteGymnast': 
+        $gymnastController->deleteGymnast($params[1]); 
         break;
     case 'getEditForm': 
         $gymnastController->getEditForm($params[1]); 

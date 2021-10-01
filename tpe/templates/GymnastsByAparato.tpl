@@ -4,7 +4,7 @@
 
     <ul>
         {foreach from=$gymnasts item=$gymnast}
-            <li> {$gymnast->nombre}</li>
+            <li> {$gymnast->nombre} : {$gymnast->aparato}</li>
         {/foreach}
             
     </ul>
@@ -16,6 +16,6 @@
 
 
 
- <a href="home" > Volver </a>
+ <a href="login" > Volver </a>
 
 {include file='templates/footer.tpl'}

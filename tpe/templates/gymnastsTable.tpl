@@ -17,7 +17,7 @@
             <tbody>
                 {foreach from=$gymnasts item=$gymnast}
                     <tr>
-                            <td><a href="viewGymnast/{$gymnast->id_gimnasta}">{$gymnast->nombre}</a></td>
+                            <td>{$gymnast->nombre}</td>
                             <td>{$gymnast->nacionalidad}</td>
                             <td>{$gymnast->id_aparato}</td>
                             <td>{$gymnast->altura}</td>
@@ -48,22 +48,6 @@
         <input type="submit">
     </form>
 
-    <a href="viewAparatos">Ver Listado de Aparatos</a>
-
-    <h2>Listar gimnastas por Aparato</h2>
-    <form action="viewGymnastByAparato" method="POST">
-        <select name="id_aparato">
-            <option value="1">1(All-Around) </option>
-            <option value="2">2(Suelo)</option>
-            <option value="3">3(Arzones)</option>
-            <option value="4">4(Anillas)</option>
-            <option value="5">5(Salto)</option>
-            <option value="6">6(Paralelas)</option>
-            <option value="7">7(Barra Fija)</option>
-        </select>
-        <input type="submit">
-    </form>
-
-    
+   <a href="home"> volver</a> 
 
 {include file='templates/footer.tpl'}
