@@ -7,7 +7,7 @@
             <tr>
                 <th>Nombre</th>
                 <th>Nacionalidad</th>
-                <th>ID Aparato</th>
+                <th>Aparato</th>
                 <th>Altura</th>
                 <th>Edad</th>
                 <th>Eliminar</th>
@@ -19,7 +19,7 @@
                     <tr>
                             <td>{$gymnast->nombre}</td>
                             <td>{$gymnast->nacionalidad}</td>
-                            <td>{$gymnast->id_aparato}</td>
+                            <td>{$gymnast->aparato}</td>
                             <td>{$gymnast->altura}</td>
                             <td>{$gymnast->edad}</td>
                             <td><a class="btn btn-danger" href="deleteGymnast/{$gymnast->id_gimnasta}">Eliminar</a></td>
@@ -41,7 +41,7 @@
             <option value="4">4(Anillas)</option>
             <option value="5">5(Salto)</option>
             <option value="6">6(Paralelas)</option>
-            <option value="7">7(Barra Fija)</option>  
+            <option value="10">10(Barra Fija)</option>  
         </select>
         <input type="text" name="altura" placeholder="altura">
         <input type="number" name="edad" placeholder="edad">
