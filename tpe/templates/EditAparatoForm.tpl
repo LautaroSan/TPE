@@ -2,8 +2,7 @@
 <h1> {$titulo} {$aparato->nombre} </h1>
 
 <form action="editAparato" method="POST">
-        <label> ID: </label> 
-        <input type="number" name="id" value ="{$aparato->id}" readonly>
+        <input type="hidden" name="id" value ="{$aparato->id}" >
         <label >Nombre:</label>
         <input type="text" name="nombre" value="{$aparato->nombre}" >
         <label >Descripcion:</label> 

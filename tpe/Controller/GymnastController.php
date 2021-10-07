@@ -24,7 +24,8 @@ class GymnastController{
     function showGymnasts(){
         $this->authHelper->checkLoggedIn();
         $gymnasts = $this->model->getGymnasts();
-        $this->view->showGymnasts($gymnasts);
+        $aparatos = $this->model->getAparatos();
+        $this->view->showGymnasts($gymnasts, $aparatos);
     }
 
     function showGymnastsList(){
@@ -64,7 +65,8 @@ class GymnastController{
     function getEditForm($id){
         $this->authHelper->checkLoggedIn();
         $gymnast = $this->model->getGymnast($id);
-        $this->view->showEditForm($gymnast);
+        $aparatos = $this->model->getAparatos();
+        $this->view->showEditForm($gymnast,$aparatos);
     }
 
     function editGymnast(){

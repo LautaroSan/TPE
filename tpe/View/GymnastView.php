@@ -8,10 +8,10 @@ class GymnastView {
         $this->smarty = new Smarty();
     }
 
-    function showGymnasts($gymnasts){
+    function showGymnasts($gymnasts,$aparatos){
         $this->smarty->assign('titulo', 'Lista de Gimnastas Masculinos');        
         $this->smarty->assign('gymnasts', $gymnasts);
-
+        $this->smarty->assign('aparatos', $aparatos);
         $this->smarty->display('templates/GymnastsTable.tpl');
     }
 
@@ -32,9 +32,10 @@ class GymnastView {
         $this->smarty->assign('gymnasts', $gymnasts);
         $this->smarty->display('templates/GymnastsByAparato.tpl');
      }
-     function showEditForm($gymnast){
+     function showEditForm($gymnast,$aparatos){
          $this->smarty->assign('titulo', 'Editar Gimnasta:');
          $this->smarty->assign('gymnast',$gymnast);
+         $this->smarty->assign('aparatos', $aparatos);
          $this->smarty->display('EditGymnastForm.tpl');
      }
 

@@ -33,15 +33,11 @@
     <form action="addGymnast" method="POST">
         <input type="text" name="nombre" placeholder="nombre y apellido">
         <input type="text" name="nacionalidad" placeholder="nacionalidad">
-        <label>ID Aparato </label>
+        <label>Aparato </label>
         <select name="id_aparato">
-            <option value="1">1 (All-Around)</option>
-            <option value="2">2(Suelo)</option>
-            <option value="3">3(Arzones)</option>
-            <option value="4">4(Anillas)</option>
-            <option value="5">5(Salto)</option>
-            <option value="6">6(Paralelas)</option>
-            <option value="10">10(Barra Fija)</option>  
+        {foreach from=$aparatos item=$aparato}
+            <option value="{$aparato->id}">{$aparato->nombre}</option>
+        {/foreach}   
         </select>
         <input type="text" name="altura" placeholder="altura">
         <input type="number" name="edad" placeholder="edad">
