@@ -7,9 +7,10 @@ class LoginView{
         $this->smarty = new Smarty();
     }
 
-    function showLogin($error = ""){
+    function showLogin($aparatos,$error = ""){
         $this->smarty->assign("titulo", "Log in");
         $this->smarty->assign("error", $error);
+        $this->smarty->assign('aparatos', $aparatos);
         $this->smarty->display('templates/login.tpl');
     }
 

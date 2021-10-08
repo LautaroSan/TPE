@@ -1,26 +1,31 @@
 <?php
 require_once "./Model/UserModel.php";
 require_once "./View/LoginView.php";
+require_once "./Model/AparatosModel.php";
 
 
 class LoginController{
     private $model;
     private $view;
+    private $aparatosModel;
 
     function __construct(){
         $this->model= new UserModel();
         $this->view = new LoginView();
+        $this->aparatosModel = new AparatosModel();
         
     }
 
     function showLogin(){
-        $this->view->showLogin();
+        $aparatos = $this->aparatosModel->getAparatos();
+        $this->view->showLogin($aparatos);
     }
 
     function logout(){
         session_start();
         session_destroy();
-        $this->view->showLogin("Te deslogueaste!");
+        $aparatos = $this->aparatosModel->getAparatos();
+        $this->view->showLogin($aparatos,"Te deslogueaste!");
     }
 
     function verifyLogin(){
@@ -34,7 +39,8 @@ class LoginController{
                 $_SESSION['nombre'] = $nombre;
                 $this->view->showHome();
             }else{
-                $this->view->showLogin("Acceso denegado");
+                $aparatos = $this->aparatosModel->getAparatos();
+                $this->view->showLogin($aparatos,"Acceso denegado");
             }
         }
     }
@@ -45,11 +51,12 @@ class LoginController{
             $pass = password_hash($_POST['password'],PASSWORD_BCRYPT);
 
             $users = $this->model->getUsers();
+            $aparatos = $this->aparatosModel->getAparatos();
             if(!$this->existe($users,$nombre)){
                 $this->model->addUser($nombre,$pass);
-                $this->view->showLogin("cuenta creada satisfactoriamente");
+                $this->view->showLogin($aparatos,"cuenta creada satisfactoriamente");
             }else{
-                $this->view->showLogin("nombre de usuario ya existe");
+                $this->view->showLogin($aparatos,"nombre de usuario ya existe");
             }
         }
     }

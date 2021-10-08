@@ -29,13 +29,9 @@
         <h4>Listar gimnastas por Aparato</h4>
     <form action="viewGymnastByAparato" method="POST">
         <select name="id_aparato">
-            <option value="1">All-Around </option>
-            <option value="2">Suelo</option>
-            <option value="3">Arzones</option>
-            <option value="4">Anillas</option>
-            <option value="5">Salto</option>
-            <option value="6">Paralelas</option>
-            <option value="10">Barra Fija</option>
+        {foreach from=$aparatos item=$aparato}
+            <option value="{$aparato->id}">{$aparato->nombre}</option>
+            {/foreach}
         </select>
         <input type="submit">
     </form>

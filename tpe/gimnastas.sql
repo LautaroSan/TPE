@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-10-2021 a las 01:01:11
+-- Tiempo de generación: 08-10-2021 a las 22:25:49
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -53,7 +53,8 @@ INSERT INTO `gimnastas` (`id_gimnasta`, `nombre`, `nacionalidad`, `id_aparato`, 
 -- Indices de la tabla `gimnastas`
 --
 ALTER TABLE `gimnastas`
-  ADD PRIMARY KEY (`id_gimnasta`);
+  ADD PRIMARY KEY (`id_gimnasta`),
+  ADD KEY `FK_TempSales_SalesReason` (`id_aparato`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -63,7 +64,17 @@ ALTER TABLE `gimnastas`
 -- AUTO_INCREMENT de la tabla `gimnastas`
 --
 ALTER TABLE `gimnastas`
-  MODIFY `id_gimnasta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_gimnasta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `gimnastas`
+--
+ALTER TABLE `gimnastas`
+  ADD CONSTRAINT `FK_TempSales_SalesReason` FOREIGN KEY (`id_aparato`) REFERENCES `aparatos` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
