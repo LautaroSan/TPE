@@ -2,17 +2,20 @@
 require_once "./Model/GymnastModel.php";
 require_once "./View/GymnastView.php";
 require_once "Helpers/AuthHelper.php";
+require_once "./Model/AparatosModel.php";
 
 class GymnastController{
 
     private $model;
     private $view;
     private $authHelper;
+    private $aparatosModel;
 
     function __construct(){
         $this->model = new GymnastModel();
         $this->view = new GymnastView();
         $this->authHelper = new AuthHelper();
+        $this->aparatosModel = new AparatosModel();
     }
 
     function showHome(){
@@ -24,7 +27,7 @@ class GymnastController{
     function showGymnasts(){
         $this->authHelper->checkLoggedIn();
         $gymnasts = $this->model->getGymnasts();
-        $aparatos = $this->model->getAparatos();
+        $aparatos = $this->aparatosModel->getAparatos();
         $this->view->showGymnasts($gymnasts, $aparatos);
     }
 
@@ -57,7 +60,7 @@ class GymnastController{
     function viewGymnastByAparato(){
         if(!empty($_POST)){
             $gymnasts = $this->model-> getGymnastsByAparato($_POST['id_aparato']);
-            $aparato = $this->model-> getAparato($_POST['id_aparato']);
+            $aparato = $this->aparatosModel-> getAparato($_POST['id_aparato']);
             $this->view->showGymnastsByAparato($gymnasts, $aparato);
         }
         
@@ -65,7 +68,7 @@ class GymnastController{
     function getEditForm($id){
         $this->authHelper->checkLoggedIn();
         $gymnast = $this->model->getGymnast($id);
-        $aparatos = $this->model->getAparatos();
+        $aparatos = $this->aparatosModel->getAparatos();
         $this->view->showEditForm($gymnast,$aparatos);
     }
 

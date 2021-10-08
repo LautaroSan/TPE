@@ -30,7 +30,7 @@ class GymnastModel{
         $gymnast = $sentencia->fetch(PDO::FETCH_OBJ);
         return $gymnast;
     }
-    function getAparatos(){
+   /* function getAparatos(){
         $query = $this->db->prepare( "select * from aparatos ");
         $query->execute();
         $aparatos = $query->fetchAll(PDO::FETCH_OBJ);
@@ -41,7 +41,7 @@ class GymnastModel{
         $query->execute(array($id));
         $aparato = $query->fetch(PDO::FETCH_OBJ);
         return $aparato;
-    }
+    }*/
     function getGymnastsByAparato($id){
         $query = $this->db->prepare("select gimnastas.*, aparatos.nombre as aparato from gimnastas join aparatos on gimnastas.id_aparato = aparatos.id where id_aparato = ?");
         $query->execute(array($id));
