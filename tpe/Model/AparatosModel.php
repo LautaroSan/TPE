@@ -20,7 +20,12 @@ class AparatosModel{
     }
     function deleteAparato($id){
         $query = $this->db->prepare("delete from aparatos where id = ? ");
-        $query->execute(array($id));
+        try{$query->execute(array($id));
+            return true;
+        }catch(PDOException $e){
+            return false;
+        }
+        
     }
     function getAparato($id){
         $query = $this->db-> prepare("select * from aparatos where id = ? ");

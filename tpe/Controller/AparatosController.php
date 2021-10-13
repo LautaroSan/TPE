@@ -38,8 +38,13 @@ class AparatosController{
     }
     function deleteAparato($id){
         $this->authHelper->checkLoggedIn();
-        $this->model->deleteAparato($id);
-        $this->view->update();
+        $mostrarAparatos=$this->model->deleteAparato($id);
+        if($mostrarAparatos){
+            $this->view->update();
+        }else{
+            $this->view->errorAlEliminar();
+        }
+        
     }
     function getEditFormAparato($id){
         $this->authHelper->checkLoggedIn();

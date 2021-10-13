@@ -29,6 +29,11 @@ class AparatosView{
     function update(){
         header("Location: ".BASE_URL."administrarAparatos");
     }
+
+    function errorAlEliminar(){
+        $this->smarty->assign('titulo', "Error al eliminar Aparato");
+        $this->smarty->display('errorAlEliminar.tpl');
+    }
 }
 
 
