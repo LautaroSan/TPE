@@ -86,5 +86,23 @@
 <form action="register" method="POST">
     <input type="nombre">
 </form>
+
+<form action="otorgarPermiso/{user->id}">
+<select name="permiso" id="">
+    <option value="administrador">Si</option>
+    <option value="noAdministrador">No</option>
+
+</select>
+<input type="submit" value="Otorgar">
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Permisos</th>
+        </tr>
+    </thead>
+</table>
 </body>
 </html>

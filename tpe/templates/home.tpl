@@ -11,6 +11,9 @@
                 <li>
                     <a href="administrarAparatos"> Administrar aparatos</a>
                 </li>
+                <li>
+                    <a href="administrarUsuarios"> Administrar usuarios</a>
+                </li>
     </ul>
 </div>
 

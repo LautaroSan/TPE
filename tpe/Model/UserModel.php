@@ -25,6 +25,11 @@ class UserModel{
         $users = $query->fetchAll(PDO::FETCH_OBJ);
         return $users;
     }
+
+    function otorgarPermiso($permiso,$id){
+        $query = $this->db->prepare("update usuarios set rol = ? where id = ?");
+        $query->execute(array($permiso, $id));
+    }
 }
 
 

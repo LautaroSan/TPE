@@ -10,6 +10,7 @@ class AuthHelper{
         if(!isset($_SESSION["nombre"])){
             header("Location: ".BASE_URL."login");
         }
+
     }
 
 }

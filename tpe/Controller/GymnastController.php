@@ -73,8 +73,7 @@ class GymnastController{
     }
 
     function editGymnast(){
-        $this->authHelper->checkLoggedIn();
-        var_dump($_POST);
+        $this->authHelper->checkLoggedIn(); 
         if(!empty($_POST)){
             if($_POST['nombre']!="" && $_POST['nacionalidad']!=""  && $_POST['id_aparato'] !=""  && ($_POST['altura']!="" && $_POST['altura'] >0)  && ($_POST['edad']!="" && $_POST['edad']>0) ){
                 $this->model->editGymnast($_POST['nombre'], $_POST['nacionalidad'],$_POST['id_aparato'],$_POST['altura'],$_POST['edad'], $_POST['id_gimnasta']);

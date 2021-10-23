@@ -22,6 +22,17 @@ class LoginView{
         $this->smarty->assign("titulo", "Registra tu cuenta");
         $this->smarty->display('templates/registerForm.tpl');
     }
+
+    function showUsers($users){
+        $this->smarty->assign('titulo', "Usuarios");
+        $this->smarty->assign('users', $users);
+        $this->smarty->display('usersTable.tpl');
+    }
+
+    function update(){
+            header("Location: ".BASE_URL."administrarUsuarios");
+    }
+    
 }
 
 

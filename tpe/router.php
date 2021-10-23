@@ -83,6 +83,14 @@ switch ($params[0]) {
     case 'editAparato': 
         $aparatosController->editAparato(); 
         break;
+    case 'administrarUsuarios': 
+        $loginController->showUsers(); 
+        break;
+    case 'otorgarPermiso': 
+        $loginController->otorgarPermiso($params[1]); 
+        break;
+        
+        
         
     default: 
         echo('404 Page not found'); 

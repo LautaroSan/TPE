@@ -2,17 +2,20 @@
 require_once "./Model/UserModel.php";
 require_once "./View/LoginView.php";
 require_once "./Model/AparatosModel.php";
+require_once "Helpers/AuthHelper.php";
 
 
 class LoginController{
     private $model;
     private $view;
     private $aparatosModel;
+    private $authHelper;
 
     function __construct(){
         $this->model= new UserModel();
         $this->view = new LoginView();
         $this->aparatosModel = new AparatosModel();
+        $this->authHelper = new AuthHelper();
         
     }
 
@@ -77,5 +80,20 @@ class LoginController{
     function showHome (){
         $this->view->showHome();    
     }
+
+    function showUsers(){
+        $this->authHelper->checkLoggedIn();
+        $users = $this->model->getUsers();
+        $this->view->showUsers($users);
+    }
+
+    function otorgarPermiso($id){
+        $this->authHelper->checkLoggedIn();
+        if(!empty($_POST)){
+            $permiso = $_POST['permiso'];
+        }
+        $this->model->otorgarPermiso($permiso,$id);
+        $this->view->update();
+        }
 }
 
