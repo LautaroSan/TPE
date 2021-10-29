@@ -10,7 +10,7 @@
     {/foreach}
 </ul>
 
-<a href="login"> volver </a>
+<a href="home"> volver </a>
 
 
 

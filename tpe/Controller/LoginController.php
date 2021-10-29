@@ -40,6 +40,8 @@ class LoginController{
             if($user && password_verify($pass, $user->clave)){
                 session_start();
                 $_SESSION['nombre'] = $nombre;
+                $_SESSION['rol'] = $user->rol;
+                $_SESSION['idUser'] = $user->id;
                 $this->view->showHome();
             }else{
                 $aparatos = $this->aparatosModel->getAparatos();
@@ -57,11 +59,12 @@ class LoginController{
             $aparatos = $this->aparatosModel->getAparatos();
             if(!$this->existe($users,$nombre)){
                 $this->model->addUser($nombre,$pass);
-                $this->view->showLogin($aparatos,"cuenta creada satisfactoriamente");
+               $this->verifyLogin($nombre,$_POST['password'] );
             }else{
                 $this->view->showLogin($aparatos,"nombre de usuario ya existe");
             }
         }
+        
     }
 
     function existe ($users,$nombre){
@@ -94,6 +97,14 @@ class LoginController{
         }
         $this->model->otorgarPermiso($permiso,$id);
         $this->view->update();
-        }
+    }
+
+    function deleteUser($id){
+        $this->authHelper->checkLoggedIn();
+        $this->model->deleteUser($id);
+        $this->view->update();
+
+    }
+
 }
 

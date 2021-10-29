@@ -89,6 +89,9 @@ switch ($params[0]) {
     case 'otorgarPermiso': 
         $loginController->otorgarPermiso($params[1]); 
         break;
+    case 'deleteUser': 
+        $loginController->deleteUser($params[1]); 
+        break;
         
         
         

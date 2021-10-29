@@ -6,6 +6,7 @@
             <th>Nombre</th>
             <th> Rol</th>
             <th> Permisos </th>
+            <th>Eliminar</th>
         </tr>
     </thead>
     {foreach from=$users item=$user}
@@ -25,6 +26,9 @@
                     </select>
                     <input type="submit" value="Otorgar">
                 </form> 
+            </td>
+            <td>
+                <a class="btn btn-danger" href="deleteUser/{$user->id}">Eliminar</a>
             </td>
              
         </tr>

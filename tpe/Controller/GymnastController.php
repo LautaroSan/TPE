@@ -20,7 +20,8 @@ class GymnastController{
 
     function showHome(){
         $this->authHelper->checkLoggedIn();
-        $this->view->showHome();
+        $rol= $this->authHelper->checkRol();
+        $this->view->showHome($rol);
         
     }
 
@@ -55,7 +56,9 @@ class GymnastController{
     
     function viewGymnast($id){
         $gymnast = $this->model->getGymnast($id);
-        $this->view->showGymnast($gymnast);
+        $rol= $this->authHelper->checkRol();
+        $userId = $this->authHelper->checkUserId();
+        $this->view->showGymnast($gymnast,$rol,$userId);
     }
     function viewGymnastByAparato(){
         if(!empty($_POST)){

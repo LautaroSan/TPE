@@ -11,6 +11,6 @@
 
 
 
- <a href="login" > Volver </a>
+ <a href="home" > Volver </a>
 
 {include file='templates/footer.tpl'}

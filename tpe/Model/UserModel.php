@@ -15,8 +15,9 @@ class UserModel{
     }
 
     function addUser($nombre,$pass){
-        $query = $this->db->prepare("INSERT INTO usuarios (nombre, clave) VALUES (?,?)");
-        $query->execute(array($nombre,$pass));
+        $rolPorDefecto = "noAdmin";
+        $query = $this->db->prepare("INSERT INTO usuarios (nombre, clave, rol) VALUES (?,?,?)");
+        $query->execute(array($nombre,$pass,$rolPorDefecto));
     }
 
     function getUsers(){
@@ -29,6 +30,11 @@ class UserModel{
     function otorgarPermiso($permiso,$id){
         $query = $this->db->prepare("update usuarios set rol = ? where id = ?");
         $query->execute(array($permiso, $id));
+    }
+
+    function deleteUser($id){
+        $query = $this->db->prepare("delete from usuarios where id = ? ");
+        $query->execute(array($id));
     }
 }
 

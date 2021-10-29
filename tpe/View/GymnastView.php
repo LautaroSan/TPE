@@ -21,8 +21,10 @@ class GymnastView {
         $this->smarty->display('templates/GymnastsPublicList.tpl');
     }
 
-    function showGymnast($gymnast){
+    function showGymnast($gymnast,$rol,$userId){
         $this->smarty->assign('gymnast', $gymnast);
+        $this->smarty->assign('rol', $rol);
+        $this->smarty->assign('userId', $userId);
         $this->smarty->display('templates/GymnastDetail.tpl');
      }
      
@@ -39,7 +41,8 @@ class GymnastView {
          $this->smarty->display('EditGymnastForm.tpl');
      }
 
-     function showHome(){
+     function showHome($rol){
+         $this->smarty->assign('rol', $rol);
         $this->smarty->assign("titulo", "Bienvenido");
         $this->smarty->display('templates/home.tpl');
      }
