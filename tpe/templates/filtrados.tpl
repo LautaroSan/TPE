@@ -5,7 +5,7 @@
 <ul>
     {foreach from=$gymnasts item=$gymnast}
     <li>
-        <a href="viewGymnast/{$gymnast->id_gimnasta}"> {$gymnast->nombre} | {$gymnast->nacionalidad} | {$gymnast->altura} | {$gymnast->edad}</a>
+        <a href="viewGymnast/{$gymnast->id_gimnasta}"> {$gymnast->nombre} | {$gymnast->nacionalidad} | {$gymnast->altura} mts.| {$gymnast->edad} años</a>
     </li>
     {/foreach}
 </ul>

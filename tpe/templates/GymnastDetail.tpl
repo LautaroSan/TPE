@@ -20,7 +20,7 @@
     <input type="text" id="idGimnasta" hidden value="{$gymnast->id_gimnasta}">
     <input type="text" id="userId" hidden value="{$userId}" >
     <input required type="text" id="texto"placeholder="escribi tu comentario">
-    <input required type = "number"id="puntaje" min="1" max="10" placeholder ="puntaje" >
+    <input required type = "number"id="puntaje" min="1" max="5" placeholder ="puntaje (máximo 5)" >
     <button class="btn btn-secondary" id="btnComent"> Comentar</button>
     </form>
 </div>

@@ -16,20 +16,16 @@ Class ApiComentariosController{
         $id = $params[":ID"];
         if(isset($_GET['sortBy']) && isset($_GET['orden'])){
             $comentariosOrdenados = $this->model->obtenerComentariosOrdenados($_GET['sortBy'],$_GET['orden'],$id);
-            if($comentariosOrdenados){
                 return $this->view->response($comentariosOrdenados,200); 
-            }
+            
         }else if (isset($_GET['filterByPuntaje']) && !empty($_GET['filterByPuntaje'])){
             $comentariosFiltrados = $this->model->obtenerComentariosFiltrados($id,$_GET['filterByPuntaje']);
-            if($comentariosFiltrados){
                 return $this->view->response($comentariosFiltrados,200); 
-            }
         }
         else{
             $comentarios = $this->model->obtenerComentarios($id);
-            if($comentarios){
             return $this->view->response($comentarios,200);
-            }
+            
         }
             
         

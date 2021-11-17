@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-11-17 18:46:18
+/* Smarty version 3.1.39, created on 2021-11-18 00:20:28
   from 'C:\xampp\htdocs\web2\tpe\templates\GymnastDetail.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_61953fea5d30a6_24039938',
+  'unifunc' => 'content_61958e3ce79743_62791200',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3bb3676694a9af45b36e35b66f815d1b9741f348' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\tpe\\templates\\GymnastDetail.tpl',
-      1 => 1637171176,
+      1 => 1637191226,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_61953fea5d30a6_24039938 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61958e3ce79743_62791200 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="container">
@@ -55,7 +55,7 @@ $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_sm
     <input type="text" id="userId" hidden value="<?php echo $_smarty_tpl->tpl_vars['userId']->value;?>
 " >
     <input required type="text" id="texto"placeholder="escribi tu comentario">
-    <input required type = "number"id="puntaje" min="1" max="10" placeholder ="puntaje" >
+    <input required type = "number"id="puntaje" min="1" max="5" placeholder ="puntaje (máximo 5)" >
     <button class="btn btn-secondary" id="btnComent"> Comentar</button>
     </form>
 </div>
