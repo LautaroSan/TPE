@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-01 22:52:44
+/* Smarty version 3.1.39, created on 2021-11-17 18:50:04
   from 'C:\xampp\htdocs\web2\tpe\templates\AparatosTable.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6157751caa5e61_37228265',
+  'unifunc' => 'content_619540cc921b42_36656147',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5b57fea8b42f54ec8ec6f315f4a7bac78d688475' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\tpe\\templates\\AparatosTable.tpl',
-      1 => 1633121562,
+      1 => 1637171390,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_6157751caa5e61_37228265 (Smarty_Internal_Template $_smarty_tpl) {
+function content_619540cc921b42_36656147 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:templates/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <h1><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
@@ -63,15 +63,19 @@ $_smarty_tpl->tpl_vars['aparato']->do_else = false;
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 </tbody>
         </table>
+     <div class="formContainer">   
         <h2>Agregar Aparato</h2>
-        <form action="addAparato" method="POST">
+        <form class="formAparato" action="addAparato" method="POST">
 
             <input type="text" name="nombre" placeholder="nombre Aparato">
             <textarea name="descripcion" cols="60" rows="1" placeholder="Descripcion aparato"></textarea>
             <input type="text" name="orden_olimpico" placeholder="orden olimpico">
-            <input type="submit">
+            <input type="submit" class="btn btn-secondary">
         </form>
-<a href="home"> volver</a> 
+    </div>
+<div class="volver">
+    <a href="home" class="btn btn-info"> volver </a>
+</div>
   <?php $_smarty_tpl->_subTemplateRender('file:templates/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 

@@ -29,7 +29,7 @@ if(btnFiltrar){
                                                 <p> ${comentario.nombre} comentó el ${comentario.fecha} </p>
                                                 <p>${comentario.texto}</p>
                                                 <p> Puntaje : ${comentario.puntaje} </p>
-                                                <button class="eliminarComentario" ${clase}>Borrar </button>
+                                                <button class="eliminarComentario btn btn-danger" ${clase}>Borrar </button>
                                             </div>
                     `
                 }
@@ -67,7 +67,7 @@ for (let i = 0; i < btnOrden.length; i++) {
                                                 <p> ${comentario.nombre} comentó el ${comentario.fecha} </p>
                                                 <p>${comentario.texto}</p>
                                                 <p> Puntaje : ${comentario.puntaje} </p>
-                                                <button class="eliminarComentario" ${clase}>Borrar </button>
+                                                <button class="eliminarComentario btn btn-danger" ${clase}>Borrar </button>
                                             </div>
                     `
                 }
@@ -112,7 +112,7 @@ async function getComentariosPorGimnasta() {
                                             <p> ${comentario.nombre} comentó el ${comentario.fecha} </p>
                                             <p>${comentario.texto}</p>
                                             <p> Puntaje : ${comentario.puntaje} </p>
-                                            <button class="eliminarComentario" ${clase}>Borrar </button>
+                                            <button class="eliminarComentario btn btn-danger" ${clase}>Borrar </button>
                                         </div>
                 `
             }

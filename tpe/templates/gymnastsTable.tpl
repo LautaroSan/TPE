@@ -29,11 +29,12 @@
             </tbody>
     </table>
 
+<div class="formContainer"> 
     <h2>Agregar gimnasta</h2>
-    <form action="addGymnast" method="POST">
+    <form class="formAparato" action="addGymnast" method="POST">
         <input type="text" name="nombre" placeholder="nombre y apellido">
         <input type="text" name="nacionalidad" placeholder="nacionalidad">
-        <label>Aparato </label>
+        <label>Seleccionar Aparato </label>
         <select name="id_aparato">
         {foreach from=$aparatos item=$aparato}
             <option value="{$aparato->id}">{$aparato->nombre}</option>
@@ -41,9 +42,12 @@
         </select>
         <input type="text" name="altura" placeholder="altura">
         <input type="number" name="edad" placeholder="edad">
-        <input type="submit">
+        <input type="submit" class="btn btn-secondary">
     </form>
+</div>
 
-   <a href="home"> volver</a> 
+   <div class="volver">
+    <a href="home" class="btn btn-info"> volver </a>
+</div> 
 
 {include file='templates/footer.tpl'}

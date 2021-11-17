@@ -16,6 +16,8 @@ class LoginController{
         $this->view = new LoginView();
         $this->aparatosModel = new AparatosModel();
         $this->authHelper = new AuthHelper();
+        $this->chequearAdmin = $this->authHelper->checkRol()=="admin";
+        $this->gymnastView = new GymnastView();
         
     }
 
@@ -86,23 +88,38 @@ class LoginController{
 
     function showUsers(){
         $this->authHelper->checkLoggedIn();
-        $users = $this->model->getUsers();
-        $this->view->showUsers($users);
+        if($this->chequearAdmin){
+            $users = $this->model->getUsers();
+            $this->view->showUsers($users);
+        }else{
+            $this->gymnastView->showError();
+        }
+        
     }
 
     function otorgarPermiso($id){
         $this->authHelper->checkLoggedIn();
-        if(!empty($_POST)){
-            $permiso = $_POST['permiso'];
+        if($this->chequearAdmin){
+            if(!empty($_POST)){
+                $permiso = $_POST['permiso'];
+            }
+            $this->model->otorgarPermiso($permiso,$id);
+            $this->view->update();  
+        }else{
+            $this->gymnastView->showError();
         }
-        $this->model->otorgarPermiso($permiso,$id);
-        $this->view->update();
+        
     }
 
     function deleteUser($id){
         $this->authHelper->checkLoggedIn();
-        $this->model->deleteUser($id);
-        $this->view->update();
+        if($this->chequearAdmin){
+            $this->model->deleteUser($id);
+            $this->view->update();
+        }else{
+            $this->gymnastView->showError();
+        }
+        
 
     }
 

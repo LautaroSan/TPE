@@ -16,6 +16,7 @@ class GymnastController{
         $this->view = new GymnastView();
         $this->authHelper = new AuthHelper();
         $this->aparatosModel = new AparatosModel();
+        $this->chequearAdmin = $this->authHelper->checkRol()=="admin";
     }
 
     function showHome(){
@@ -26,9 +27,14 @@ class GymnastController{
 
     function showGymnasts(){
         $this->authHelper->checkLoggedIn();
-        $gymnasts = $this->model->getGymnasts();
-        $aparatos = $this->aparatosModel->getAparatos();
-        $this->view->showGymnasts($gymnasts, $aparatos);
+        if($this->chequearAdmin){
+            $gymnasts = $this->model->getGymnasts();
+            $aparatos = $this->aparatosModel->getAparatos();
+            $this->view->showGymnasts($gymnasts, $aparatos);
+        }else{
+            $this->view->showError();
+        }
+        
     }
 
     function showGymnastsList(){
@@ -44,19 +50,29 @@ class GymnastController{
 
     function addGymnast(){
         $this->authHelper->checkLoggedIn();
-        if(!empty($_POST)){
-            if($_POST['nombre']!="" && $_POST['nacionalidad']!=""  && ($_POST['altura']!="" && $_POST['altura'] >0)  && ($_POST['edad']!="" && $_POST['edad']>0) ){
-                $this->model->insertGymnast($_POST['nombre'], $_POST['nacionalidad'], $_POST['id_aparato'],$_POST['altura'],$_POST['edad']);
-                
+        if($this->chequearAdmin){
+            if(!empty($_POST)){
+                if($_POST['nombre']!="" && $_POST['nacionalidad']!=""  && ($_POST['altura']!="" && $_POST['altura'] >0)  && ($_POST['edad']!="" && $_POST['edad']>0) ){
+                    $this->model->insertGymnast($_POST['nombre'], $_POST['nacionalidad'], $_POST['id_aparato'],$_POST['altura'],$_POST['edad']);
+                    
+                }
+                $this->view->update();
             }
-            $this->view->update();
-        }    
+        }else{
+            $this->view->showError(); 
+        }
+            
     }
 
     function deleteGymnast($id){
         $this->authHelper->checkLoggedIn();
-        $this->model->deleteGymnastFromDB($id);
-        $this->view->update();
+        if($this->chequearAdmin){
+            $this->model->deleteGymnastFromDB($id);
+            $this->view->update();
+        }else{
+            $this->view->showError(); 
+        }
+        
     }
     
     function viewGymnast($id){
@@ -74,20 +90,30 @@ class GymnastController{
     }
     function getEditForm($id){
         $this->authHelper->checkLoggedIn();
-        $gymnast = $this->model->getGymnast($id);
-        $aparatos = $this->aparatosModel->getAparatos();
-        $this->view->showEditForm($gymnast,$aparatos);
+        if($this->chequearAdmin){
+            $gymnast = $this->model->getGymnast($id);
+            $aparatos = $this->aparatosModel->getAparatos();
+            $this->view->showEditForm($gymnast,$aparatos);
+        }else{
+            $this->view->showError();
+        }
+        
     }
 
     function editGymnast(){
-        $this->authHelper->checkLoggedIn(); 
-        if(!empty($_POST)){
-            if($_POST['nombre']!="" && $_POST['nacionalidad']!=""  && $_POST['id_aparato'] !=""  && ($_POST['altura']!="" && $_POST['altura'] >0)  && ($_POST['edad']!="" && $_POST['edad']>0) ){
-                $this->model->editGymnast($_POST['nombre'], $_POST['nacionalidad'],$_POST['id_aparato'],$_POST['altura'],$_POST['edad'], $_POST['id_gimnasta']);
-                
-            }
-            $this->view->update();
-        }  
+        $this->authHelper->checkLoggedIn();
+        if($this->chequearAdmin){
+            if(!empty($_POST)){
+                if($_POST['nombre']!="" && $_POST['nacionalidad']!=""  && $_POST['id_aparato'] !=""  && ($_POST['altura']!="" && $_POST['altura'] >0)  && ($_POST['edad']!="" && $_POST['edad']>0) ){
+                    $this->model->editGymnast($_POST['nombre'], $_POST['nacionalidad'],$_POST['id_aparato'],$_POST['altura'],$_POST['edad'], $_POST['id_gimnasta']);
+                    
+                }
+                $this->view->update();
+            }  
+        }else{
+            $this->view->showError();
+        }
+        
     }
 
     function busquedaAvanzada(){

@@ -24,15 +24,19 @@
                     {/foreach}
                 </tbody>
         </table>
+     <div class="formContainer">   
         <h2>Agregar Aparato</h2>
-        <form action="addAparato" method="POST">
+        <form class="formAparato" action="addAparato" method="POST">
 
             <input type="text" name="nombre" placeholder="nombre Aparato">
             <textarea name="descripcion" cols="60" rows="1" placeholder="Descripcion aparato"></textarea>
             <input type="text" name="orden_olimpico" placeholder="orden olimpico">
-            <input type="submit">
+            <input type="submit" class="btn btn-secondary">
         </form>
-<a href="home"> volver</a> 
+    </div>
+<div class="volver">
+    <a href="home" class="btn btn-info"> volver </a>
+</div>
   {include file='templates/footer.tpl'}
 
     

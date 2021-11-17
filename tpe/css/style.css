@@ -9,3 +9,50 @@ footer{
 body{
     background-color: cornsilk;
 }
+.login{
+    display: flex;
+    flex-direction: column;
+}
+.login div{
+    margin-top: 50px;
+}
+.register{
+    width: 10%;
+}
+.volver{
+    margin: 30px;
+}
+.listaPublica{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.formAparato{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 5px;
+}
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.formAparato label{
+    border: solid black 1px;
+    background-color: white;
+    font-weight: bold;
+}
+.ordenar button{
+    margin: 10px;
+}
+.filtro label{
+    font-weight: bold;
+}
+#contenedor div{
+    border: solid black 1px;
+    background-color: wheat;
+    margin-bottom: 5px;
+    font-weight: bold;
+}

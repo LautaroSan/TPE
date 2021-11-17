@@ -1,7 +1,7 @@
 {include file= 'header.tpl'}
 <h1> {$titulo} {$gymnast->nombre} </h1>
 
-<form action="editGymnast" method="POST">
+<form class="formAparato" action="editGymnast" method="POST">
          <input type="hidden" name="id_gimnasta" value ="{$gymnast->id_gimnasta}" >
         <label >Nombre y Apellido:</label>
         <input type="text" name="nombre" value="{$gymnast->nombre}" >
@@ -19,7 +19,7 @@
         <input type="text" name="altura" value="{$gymnast->altura}">
         <label>Edad:</label>
         <input type="number" name="edad" value="{$gymnast->edad}">
-        <input type="submit" value="Editar">
+        <input type="submit" class="btn btn-secondary" value="Editar">
     </form>
 
     {include file='templates/footer.tpl'}

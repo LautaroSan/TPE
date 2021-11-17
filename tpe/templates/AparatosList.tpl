@@ -1,16 +1,17 @@
 {include file= 'header.tpl'}
 
-<h1>{$titulo}</h1>
-    <ul>
-        {foreach from=$aparatos item=$aparato}
-            <li> {$aparato->nombre}</li>
-        {/foreach}
-            
-    </ul>
+<div class="listaPublica">
+    <h1>{$titulo}</h1>
+        <ul>
+            {foreach from=$aparatos item=$aparato}
+                <li> {$aparato->nombre}</li>
+            {/foreach}
+                
+        </ul>
+
+</div>
 
 
-
-
- <a href="home" > Volver </a>
+ <a href="home" class="btn btn-info" > Volver </a>
 
 {include file='templates/footer.tpl'}

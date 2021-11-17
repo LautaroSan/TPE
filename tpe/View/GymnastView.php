@@ -66,5 +66,10 @@ class GymnastView {
 
     }
 
+    function showError(){
+        $this->smarty->assign('titulo', "Error de Permisos");
+        $this->smarty->display('errorDePermisos.tpl');
+    }
+
     
 }

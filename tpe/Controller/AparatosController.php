@@ -12,13 +12,20 @@ class AparatosController{
         $this->model = new AparatosModel();
         $this->view = new AparatosView();
         $this->authHelper = new AuthHelper();
+        $this->chequearAdmin = $this->authHelper->checkRol()=="admin";
+        $this->gymnastView = new GymnastView();
 
     }
 
     function showAparatos(){
         $this->authHelper->checkLoggedIn();
-        $aparatos = $this->model->getAparatos();
-        $this->view->showAparatos($aparatos);
+        if($this->chequearAdmin){
+            $aparatos = $this->model->getAparatos();
+            $this->view->showAparatos($aparatos);
+        }else{
+            $this->gymnastView->showError();
+        }
+        
     }
 
     function showAparatosPublico(){
@@ -28,37 +35,57 @@ class AparatosController{
 
     function addAparato(){
         $this->authHelper->checkLoggedIn();
-        if(!empty($_POST)){
-            if($_POST['nombre']!="" && $_POST['descripcion']!=""){
-                $this->model->insertAparato($_POST['nombre'], $_POST['descripcion'], $_POST['orden_olimpico']);
-                
-            }
-            $this->view->update();
+        if($this->chequearAdmin){
+            if(!empty($_POST)){
+                if($_POST['nombre']!="" && $_POST['descripcion']!=""){
+                    $this->model->insertAparato($_POST['nombre'], $_POST['descripcion'], $_POST['orden_olimpico']);
+                    
+                }
+                $this->view->update();
+            }   
+        }else{
+            $this->gymnastView->showError();
         }
+        
     }
     function deleteAparato($id){
         $this->authHelper->checkLoggedIn();
-        $mostrarAparatos=$this->model->deleteAparato($id);
-        if($mostrarAparatos){
-            $this->view->update();
+        if($this->chequearAdmin){
+            $mostrarAparatos=$this->model->deleteAparato($id);
+            if($mostrarAparatos){
+                $this->view->update();
+            }else{
+                $this->view->errorAlEliminar();
+            } 
         }else{
-            $this->view->errorAlEliminar();
+            $this->gymnastView->showError();
         }
+        
         
     }
     function getEditFormAparato($id){
         $this->authHelper->checkLoggedIn();
-        $aparato = $this->model->getAparato($id);
-        $this->view->showEditForm($aparato);
+        if($this->chequearAdmin){
+            $aparato = $this->model->getAparato($id);
+            $this->view->showEditForm($aparato); 
+        }else{
+            $this->gymnastView->showError();
+        }
+        
     }
     function editAparato(){
         $this->authHelper->checkLoggedIn();
-        if(!empty($_POST)){
-            if($_POST['nombre']!="" && $_POST['descripcion']!=""){
-                $this->model->editAparato($_POST['nombre'], $_POST['descripcion'], $_POST['orden_olimpico'], $_POST['id']);
-            }
-        $this->view->update();
+        if($this->chequearAdmin){
+            if(!empty($_POST)){
+                if($_POST['nombre']!="" && $_POST['descripcion']!=""){
+                    $this->model->editAparato($_POST['nombre'], $_POST['descripcion'], $_POST['orden_olimpico'], $_POST['id']);
+                }
+            $this->view->update();
+            }  
+        }else{
+            $this->gymnastView->showError();
         }
+        
     }
 }
 

@@ -36,5 +36,7 @@
     {/foreach}
 </table>
 
-<a href="home"> volver</a> 
+<div class="volver">
+    <a href="home" class="btn btn-info"> volver </a>
+</div>
 {include file='templates/footer.tpl'}
