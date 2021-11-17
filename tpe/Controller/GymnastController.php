@@ -20,8 +20,7 @@ class GymnastController{
 
     function showHome(){
         $this->authHelper->checkLoggedIn();
-        $rol= $this->authHelper->checkRol();
-        $this->view->showHome($rol);
+        $this->view->showHome();
         
     }
 
@@ -33,8 +32,14 @@ class GymnastController{
     }
 
     function showGymnastsList(){
-        $gymnasts = $this->model->getGymnasts();
-        $this->view->showPublicList($gymnasts);
+        if(!isset($_GET['page'])){
+            $page = 0;
+        }else{
+            $page = $_GET['page'];
+        }
+        $gymnasts = $this->model->getGymnastsPaginated($page);
+        $ultimaPag = count($gymnasts)/5;
+        $this->view->showPublicList($gymnasts,$page,$ultimaPag);
     }
 
     function addGymnast(){
@@ -56,9 +61,8 @@ class GymnastController{
     
     function viewGymnast($id){
         $gymnast = $this->model->getGymnast($id);
-        $rol= $this->authHelper->checkRol();
         $userId = $this->authHelper->checkUserId();
-        $this->view->showGymnast($gymnast,$rol,$userId);
+        $this->view->showGymnast($gymnast,$userId);
     }
     function viewGymnastByAparato(){
         if(!empty($_POST)){
@@ -84,5 +88,17 @@ class GymnastController{
             }
             $this->view->update();
         }  
+    }
+
+    function busquedaAvanzada(){
+        $this->authHelper->checkLoggedIn();
+        if(empty($_POST['nacionalidad']) && empty($_POST['alturaMayor']) && empty($_POST['alturaMenor']) && empty($_POST['edadMayor']) && empty($_POST['edadMenor'])){
+            $error = "Debes especificar al menos un criterio de Búsqueda";
+            $this->view->mostrarFiltrados($error);
+        }else{
+            $gymnasts = $this->model->busquedaAvanzadaGymnast($_POST['nacionalidad'],$_POST['alturaMayor'],$_POST['alturaMenor'],$_POST['edadMayor'],$_POST['edadMenor']);
+            $this->view->mostrarFiltrados("",$gymnasts);
+        }
+        
     }
 }

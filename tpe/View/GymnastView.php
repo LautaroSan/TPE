@@ -3,9 +3,13 @@ require_once 'libs\smarty-3.1.39\libs\Smarty.class.php';
 
 class GymnastView {
     private $smarty;
+    private $rol;
+    private $authHelper;
 
     function __construct() {
         $this->smarty = new Smarty();
+        $this->authHelper = new AuthHelper();
+        $this->rol = $this->authHelper->checkRol();
     }
 
     function showGymnasts($gymnasts,$aparatos){
@@ -15,15 +19,18 @@ class GymnastView {
         $this->smarty->display('templates/GymnastsTable.tpl');
     }
 
-    function showPublicList ($gymnasts){
+    function showPublicList ($gymnasts,$page,$ultimaPag){
         $this->smarty->assign('titulo', 'Lista de Gimnastas Masculinos');
         $this->smarty->assign('gymnasts', $gymnasts);
+        $this->smarty->assign('page', $page);
+        $this->smarty->assign('rol', $this->rol);
+        $this->smarty->assign('ultimaPag', $ultimaPag);
         $this->smarty->display('templates/GymnastsPublicList.tpl');
     }
 
-    function showGymnast($gymnast,$rol,$userId){
+    function showGymnast($gymnast,$userId){
         $this->smarty->assign('gymnast', $gymnast);
-        $this->smarty->assign('rol', $rol);
+        $this->smarty->assign('rol',  $this->rol);
         $this->smarty->assign('userId', $userId);
         $this->smarty->display('templates/GymnastDetail.tpl');
      }
@@ -41,14 +48,22 @@ class GymnastView {
          $this->smarty->display('EditGymnastForm.tpl');
      }
 
-     function showHome($rol){
-         $this->smarty->assign('rol', $rol);
+     function showHome(){
+         $this->smarty->assign('rol',  $this->rol);
         $this->smarty->assign("titulo", "Bienvenido");
         $this->smarty->display('templates/home.tpl');
      }
 
     function update(){
         header("Location: ".BASE_URL."administrarGymnasts");
+    }
+
+    function mostrarFiltrados($error ="",$gymnasts=[]){
+        $this->smarty->assign('titulo', 'Busqueda Avanzada De Gimnastas');
+        $this->smarty->assign('error',$error);
+        $this->smarty->assign('gymnasts', $gymnasts);
+        $this->smarty->display('templates/filtrados.tpl');
+
     }
 
     

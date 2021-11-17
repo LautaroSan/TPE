@@ -1,10 +1,86 @@
 "use strict"
 
-const url = "api/gimnastas";
+const URL = "api/gimnastas";
 
 let btn = document.querySelector("#btnComent");
 if(btn){
     btn.addEventListener("click", postearComentario);   
+}
+
+let btnFiltrar = document.querySelector("#filtrarPorPuntaje");
+if(btnFiltrar){
+    btnFiltrar.addEventListener("click", async function(e){
+        e.preventDefault();
+        let contenedor = document.querySelector("#contenedor");
+        let id = contenedor.dataset.id;
+        let rol = contenedor.dataset.rol;
+        let puntaje = document.querySelector("#puntajeFiltro");
+        try{
+            let response = await fetch(`${URL}/${id}/comentarios?filterByPuntaje=${puntaje.value}`);
+            if(response.ok){
+                contenedor.innerHTML="";
+                let comentarios = await response.json();
+                let clase ="hidden";
+                if(rol == "admin"){
+                    clase = ""
+                }
+                for (let comentario of comentarios) {
+                    contenedor.innerHTML+=` <div data-id="${comentario.id}"> 
+                                                <p> ${comentario.nombre} comentó el ${comentario.fecha} </p>
+                                                <p>${comentario.texto}</p>
+                                                <p> Puntaje : ${comentario.puntaje} </p>
+                                                <button class="eliminarComentario" ${clase}>Borrar </button>
+                                            </div>
+                    `
+                }
+                asignarFuncionEliminar();
+            }else{
+                contenedor.innerHTML="Failed Url";
+            }
+
+        }catch(e){
+            console.log(e);
+        }
+    })
+}
+
+let btnOrden = document.querySelectorAll(".btnOrden");
+for (let i = 0; i < btnOrden.length; i++) {
+    btnOrden[i].addEventListener("click", async function(e){
+        let contenedor = document.querySelector("#contenedor");
+        let id = contenedor.dataset.id;
+        let rol = contenedor.dataset.rol;
+        let criterio = this.dataset.criterio;
+        let orden = this.dataset.orden;
+        
+        try{
+            let response = await fetch(`${URL}/${id}/comentarios?sortBy=${criterio}&orden=${orden}`);
+            if(response.ok){
+                contenedor.innerHTML="";
+                let comentarios = await response.json();
+                let clase ="hidden";
+                if(rol == "admin"){
+                    clase = ""
+                }
+                for (let comentario of comentarios) {
+                    contenedor.innerHTML+=` <div data-id="${comentario.id}"> 
+                                                <p> ${comentario.nombre} comentó el ${comentario.fecha} </p>
+                                                <p>${comentario.texto}</p>
+                                                <p> Puntaje : ${comentario.puntaje} </p>
+                                                <button class="eliminarComentario" ${clase}>Borrar </button>
+                                            </div>
+                    `
+                }
+                asignarFuncionEliminar();  
+            }else{
+                contenedor.innerHTML="Failed Url";
+            }
+        }
+        catch(e){
+            console.log(e);
+        }
+    })
+    
 }
 
 /*let app = new Vue({
@@ -23,7 +99,7 @@ async function getComentariosPorGimnasta() {
     let rol = contenedor.dataset.rol;
     // fetch para traer todas las tareas
     try {
-        let response = await fetch(`${url}/${id}/comentarios`);
+        let response = await fetch(`${URL}/${id}/comentarios`);
         if(response.ok){
             contenedor.innerHTML="";
             let comentarios = await response.json();
@@ -33,7 +109,7 @@ async function getComentariosPorGimnasta() {
             }
             for (let comentario of comentarios) {
                 contenedor.innerHTML+=` <div data-id="${comentario.id}"> 
-                                            <p> ${comentario.nombre} </p>
+                                            <p> ${comentario.nombre} comentó el ${comentario.fecha} </p>
                                             <p>${comentario.texto}</p>
                                             <p> Puntaje : ${comentario.puntaje} </p>
                                             <button class="eliminarComentario" ${clase}>Borrar </button>
@@ -57,7 +133,7 @@ function asignarFuncionEliminar(params) {
        botones[i].addEventListener("click", async function(e){
         let id = this.parentElement.dataset.id;
         try{
-            let response = await fetch(`${url}/${id}/comentarios`,{
+            let response = await fetch(`${URL}/${id}/comentarios`,{
                 method: 'DELETE'
             })
             if(response.status === 200){
@@ -92,7 +168,7 @@ async function postearComentario(){
     }
 
     try{
-        let response = await fetch(`${url}/comentarios`,{
+        let response = await fetch(`${URL}/comentarios`,{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(comentario)

@@ -12,5 +12,6 @@ $router->addRoute('gimnastas/:ID/comentarios', 'GET', 'ApiComentariosController'
 $router->addRoute('gimnastas/:ID/comentarios', 'DELETE', 'ApiComentariosController', 'eliminarComentario');
 $router->addRoute('gimnastas/comentarios', 'POST', 'ApiComentariosController', 'insertarComentario');
 
+
 // rutea
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);

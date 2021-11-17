@@ -25,7 +25,7 @@ class LoginController{
     }
 
     function logout(){
-        session_start();
+        if(session_status() === PHP_SESSION_NONE) session_start();
         session_destroy();
         $aparatos = $this->aparatosModel->getAparatos();
         $this->view->showLogin($aparatos,"Te deslogueaste!");

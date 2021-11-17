@@ -6,7 +6,7 @@ class AuthHelper{
     }
 
     function checkLoggedIn(){
-        session_start();
+        if(session_status() === PHP_SESSION_NONE) session_start();
         if(!isset($_SESSION["nombre"])){
             header("Location: ".BASE_URL."login");
         }

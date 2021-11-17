@@ -14,14 +14,30 @@ Class ApiComentariosController{
 
     function obtenerComentarios($params = null){
         $id = $params[":ID"];
-        $comentarios = $this->model->obtenerComentarios($id);
-        if($comentarios){
-            return $this->view->response($comentarios,200);
+        if(isset($_GET['sortBy']) && isset($_GET['orden'])){
+            $comentariosOrdenados = $this->model->obtenerComentariosOrdenados($_GET['sortBy'],$_GET['orden'],$id);
+            if($comentariosOrdenados){
+                return $this->view->response($comentariosOrdenados,200); 
+            }
+        }else if (isset($_GET['filterByPuntaje'])){
+            $comentariosFiltrados = $this->model->obtenerComentariosFiltrados($id,$_GET['filterByPuntaje']);
+            if($comentariosFiltrados){
+                return $this->view->response($comentariosFiltrados,200); 
+            }
         }
+        else{
+            $comentarios = $this->model->obtenerComentarios($id);
+            if($comentarios){
+            return $this->view->response($comentarios,200);
+            }
+        }
+            
         
+        
+           
     }
 
-    function obtenerComentario($params = null){
+    /*function obtenerComentario($params = null){
         $id = $params[":ID"];
         $comentario = $this->model->obtenerComentario($id);
         if($comentario){
@@ -29,7 +45,7 @@ Class ApiComentariosController{
         }else{
             return $this->view->response("El comentario con el id=$id no existe", 404);
         }
-    }
+    }*/
 
     function eliminarComentario($params = null){
         $id = $params[":ID"];

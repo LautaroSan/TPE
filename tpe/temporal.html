@@ -9,104 +9,15 @@
 <body>
     
 
+<h2>Busqueda Avanzada</h2>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Nacionalidad</th>
-                <th>Especialista</th>
-                <th>Altura</th>
-                <th>Edad</th>
-                <th>Eliminar</th>
-                <th>Editar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><a href=""></a></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-
-    </table>
-
-
-    <h2>Agregar gimnasta</h2>
-    <form action="addGymnast" method="POST">
-        <input type="text" name="nombre" placeholder="nombre">
-        <input type="text" name="nacionalidad" placeholder="nacionalidad">
-        <label>Especialista en </label>
-        <select name="aparato">
-            <option value="Suelo">Suelo</option>
-            <option value="Arzones">Arzones</option>
-            <option value="Anillas">Anillas</option>
-            <option value="Salto">Salto</option>
-            <option value="Paralelas">Paralelas</option>
-            <option value="Barra Fija">Barra Fija</option>
-            <option value="All-Around">All-Around</option>
-        </select>
-        <input type="text" name="especialista" placeholder="especialista en">
-        <input type="text" name="altura" placeholder="altura">
-        <input type="number" name="edad" placeholder="edad">
-        <input type="submit">
-    </form>
-
-    <a href="viewAparatos">Ver Listado de Aparatos</a>
-    <h1></h1>
-    <ul>
-        <li></li>
-        
-    </ul>
-
-    <h2>Listar gimnastas por Aparato</h2>
-    <form action="viewGymnastByAparato" method="POST">
-        <input type="text" name="aparato" placeholder="seleccione aparato ">
-        <input type="submit">
-    </form>
-
-    <form action=""></form>
-
-    <h2>Agregar Aparato</h2>
-    <form action="addAparato" method="POST">
-
-        <input type="text" name="nombre" placeholder="nombre Aparato">
-        <textarea name="descripcion" cols="30" rows="10" placeholder="Descripcion aparato"></textarea>
-        <input type="text" name="orden_olimpico" placeholder="orden olimpico">
-        <input type="submit">
-    </form>
-    <a href="home"> Ver gimnastas</a>
-    <h3> Acceso Público</h3>
-
-<form action="register" method="POST">
-    <input type="nombre">
+<form action="busquedaAvanzada" method="get">
+    <input type="text" name="filtro" required placeholder="ingrese su filtro de busqueda">
+    <input type="submit">
+    <input type="number" min="1" max ="5" placeholder="Mostrar comentarios con puntaje = ..........">
 </form>
 
-<form action="otorgarPermiso/{user->id}">
-<select name="permiso" id="">
-    <option value="administrador">Si</option>
-    <option value="noAdministrador">No</option>
+    
 
-</select>
-<input type="submit" value="Otorgar">
-</form>
-
-<table>
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Permisos</th>
-        </tr>
-    </thead>
-</table>
-
-<input type="text">
-<button></button>
-<script src="js/app.js"></script>
 </body>
 </html>

@@ -71,6 +71,9 @@ switch ($params[0]) {
     case 'editGymnast': 
         $gymnastController->editGymnast(); 
         break;
+    case 'busquedaAvanzada': 
+        $gymnastController->busquedaAvanzada(); 
+        break;  
     case 'addAparato': 
         $aparatosController->addAparato(); 
         break;
