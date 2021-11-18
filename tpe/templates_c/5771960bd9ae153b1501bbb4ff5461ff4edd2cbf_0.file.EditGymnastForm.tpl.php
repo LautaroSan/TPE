@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-11-17 18:56:20
+/* Smarty version 3.1.39, created on 2021-11-18 19:28:20
   from 'C:\xampp\htdocs\web2\tpe\templates\EditGymnastForm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_61954244e6e518_74821670',
+  'unifunc' => 'content_61969b44255269_72836961',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5771960bd9ae153b1501bbb4ff5461ff4edd2cbf' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\tpe\\templates\\EditGymnastForm.tpl',
-      1 => 1637171777,
+      1 => 1637260097,
       2 => 'file',
     ),
   ),
@@ -22,14 +22,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_61954244e6e518_74821670 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61969b44255269_72836961 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <h1> <?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
  <?php echo $_smarty_tpl->tpl_vars['gymnast']->value->nombre;?>
  </h1>
 
-<form class="formAparato" action="editGymnast" method="POST">
+<form class="formAparato" action="editGymnast" method="POST" enctype="multipart/form-data">
          <input type="hidden" name="id_gimnasta" value ="<?php echo $_smarty_tpl->tpl_vars['gymnast']->value->id_gimnasta;?>
 " >
         <label >Nombre y Apellido:</label>
@@ -61,6 +61,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         <label>Edad:</label>
         <input type="number" name="edad" value="<?php echo $_smarty_tpl->tpl_vars['gymnast']->value->edad;?>
 ">
+        <label>Imagen </label>
+        <input type="file" name="gymnast_image">
         <input type="submit" class="btn btn-secondary" value="Editar">
     </form>
 

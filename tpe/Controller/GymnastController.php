@@ -53,7 +53,14 @@ class GymnastController{
         if($this->chequearAdmin){
             if(!empty($_POST)){
                 if($_POST['nombre']!="" && $_POST['nacionalidad']!=""  && ($_POST['altura']!="" && $_POST['altura'] >0)  && ($_POST['edad']!="" && $_POST['edad']>0) ){
-                    $this->model->insertGymnast($_POST['nombre'], $_POST['nacionalidad'], $_POST['id_aparato'],$_POST['altura'],$_POST['edad']);
+                    if($_FILES['gymnast_image']['type'] == "image/jpg" || $_FILES['gymnast_image']['type'] == "image/jpeg" 
+                    || $_FILES['gymnast_image']['type'] == "image/png" ) {
+                        $this->model->insertGymnast($_POST['nombre'], $_POST['nacionalidad'], $_POST['id_aparato'],$_POST['altura'],$_POST['edad'],$_FILES['gymnast_image']['tmp_name']);
+
+                    }else{
+                        $this->model->insertGymnast($_POST['nombre'], $_POST['nacionalidad'], $_POST['id_aparato'],$_POST['altura'],$_POST['edad']);
+                    }
+
                     
                 }
                 $this->view->update();
@@ -105,7 +112,15 @@ class GymnastController{
         if($this->chequearAdmin){
             if(!empty($_POST)){
                 if($_POST['nombre']!="" && $_POST['nacionalidad']!=""  && $_POST['id_aparato'] !=""  && ($_POST['altura']!="" && $_POST['altura'] >0)  && ($_POST['edad']!="" && $_POST['edad']>0) ){
-                    $this->model->editGymnast($_POST['nombre'], $_POST['nacionalidad'],$_POST['id_aparato'],$_POST['altura'],$_POST['edad'], $_POST['id_gimnasta']);
+                    if($_FILES['gymnast_image']['type'] == "image/jpg" || $_FILES['gymnast_image']['type'] == "image/jpeg" 
+                    || $_FILES['gymnast_image']['type'] == "image/png" ) {
+                        var_dump($_FILES);
+                        $this->model->editGymnast($_POST['nombre'], $_POST['nacionalidad'],$_POST['id_aparato'],$_POST['altura'],$_POST['edad'], $_POST['id_gimnasta'],$_FILES['gymnast_image']['tmp_name'] );
+
+                    }else{
+                        $this->model->editGymnast($_POST['nombre'], $_POST['nacionalidad'],$_POST['id_aparato'],$_POST['altura'],$_POST['edad'], $_POST['id_gimnasta']);
+                    }
+                    
                     
                 }
                 $this->view->update();

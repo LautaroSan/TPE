@@ -24,9 +24,19 @@ class GymnastModel{
 
     
 
-    function insertGymnast($nombre, $nac,$id, $alt,$edad){
-        $sentencia = $this->db->prepare("INSERT INTO gimnastas(nombre, nacionalidad, id_aparato, altura, edad) VALUES(?, ?, ?, ?,?)");
-        $sentencia->execute(array($nombre,$nac,$id, $alt, $edad ));
+    function insertGymnast($nombre, $nac,$id, $alt,$edad,$imagen=null){
+        $pathImg = null;
+        if($imagen){
+            $pathImg=$this->uploadImg($imagen);
+        }
+        $sentencia = $this->db->prepare("INSERT INTO gimnastas(nombre, nacionalidad, id_aparato, altura, edad,img) VALUES(?, ?, ?, ?,?,?)");
+        $sentencia->execute(array($nombre,$nac,$id, $alt, $edad,$pathImg ));
+    }
+
+    function uploadImg($img){
+        $target = "images/".uniqid("",true).".". strtolower(pathinfo($_FILES['gymnast_image']['name'],PATHINFO_EXTENSION));
+        move_uploaded_file($img,$target);
+        return $target;
     }
 
     function deleteGymnastFromDB($id){
@@ -47,9 +57,13 @@ class GymnastModel{
         $gymnasts = $query->fetchAll(PDO::FETCH_OBJ);
         return $gymnasts;
     }
-    function editGymnast($nombre, $nac,$idAparato, $alt,$edad, $id){
-        $query = $this->db->prepare("update gimnastas set nombre = ? , nacionalidad = ? , id_aparato = ? , altura = ? , edad = ? where id_gimnasta = ? ");
-        $query->execute(array($nombre,$nac,$idAparato,$alt,$edad,$id));
+    function editGymnast($nombre, $nac,$idAparato, $alt,$edad, $id,$imagen=null){
+        $pathImg = null;
+        if($imagen){
+            $pathImg=$this->uploadImg($imagen);
+        }
+        $query = $this->db->prepare("update gimnastas set nombre = ? , nacionalidad = ? , id_aparato = ? , altura = ? , edad = ? , img = ? where id_gimnasta = ? ");
+        $query->execute(array($nombre,$nac,$idAparato,$alt,$edad,$pathImg,$id));
 
     }
 

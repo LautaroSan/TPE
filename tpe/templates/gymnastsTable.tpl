@@ -31,7 +31,7 @@
 
 <div class="formContainer"> 
     <h2>Agregar gimnasta</h2>
-    <form class="formAparato" action="addGymnast" method="POST">
+    <form class="formAparato" action="addGymnast" method="POST" enctype="multipart/form-data">
         <input type="text" name="nombre" placeholder="nombre y apellido">
         <input type="text" name="nacionalidad" placeholder="nacionalidad">
         <label>Seleccionar Aparato </label>
@@ -42,6 +42,8 @@
         </select>
         <input type="text" name="altura" placeholder="altura">
         <input type="number" name="edad" placeholder="edad">
+        <label>Imagen </label>
+        <input type="file" name="gymnast_image" >
         <input type="submit" class="btn btn-secondary">
     </form>
 </div>
