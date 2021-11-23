@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-10-2021 a las 22:25:49
+-- Tiempo de generación: 24-11-2021 a las 00:20:43
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -33,17 +33,21 @@ CREATE TABLE `gimnastas` (
   `nacionalidad` varchar(200) NOT NULL,
   `id_aparato` int(200) NOT NULL,
   `altura` double NOT NULL,
-  `edad` int(11) NOT NULL
+  `edad` int(11) NOT NULL,
+  `img` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `gimnastas`
 --
 
-INSERT INTO `gimnastas` (`id_gimnasta`, `nombre`, `nacionalidad`, `id_aparato`, `altura`, `edad`) VALUES
-(1, 'Kohei Uchimura', 'Japon', 1, 1.6, 32),
-(2, 'Oleg Verniaiev', 'Ucrania', 1, 1.6, 27),
-(4, 'Federico Molinari', 'Argentina', 4, 1.65, 37);
+INSERT INTO `gimnastas` (`id_gimnasta`, `nombre`, `nacionalidad`, `id_aparato`, `altura`, `edad`, `img`) VALUES
+(1, 'Kohei Uchimura', 'Japon', 1, 1.6, 32, 'images/61969b5b68d4e1.38033373.jpg'),
+(2, 'Oleg Verniaiev', 'Ucrania', 1, 1.6, 27, 'images/61969bf3db80f1.26795321.jpg'),
+(4, 'Federico Molinari', 'Argentina', 4, 1.65, 37, 'images/61969c4cc0a950.65407574.jpg'),
+(30, 'Fabian Hambüchen', 'Alemania', 13, 1.63, 34, 'images/61969c7ee6ee35.20719866.jpg'),
+(31, 'Max Whitlock', 'Gran Bretaña', 3, 1.67, 28, 'images/61969ca3931df7.38511684.jpg'),
+(32, 'Artiom Dolgopiat', 'Israel', 2, 1.62, 24, 'images/61969d3918e4d4.83177625.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -64,7 +68,7 @@ ALTER TABLE `gimnastas`
 -- AUTO_INCREMENT de la tabla `gimnastas`
 --
 ALTER TABLE `gimnastas`
-  MODIFY `id_gimnasta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_gimnasta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- Restricciones para tablas volcadas

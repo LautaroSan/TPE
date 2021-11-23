@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-11-2021 a las 20:56:35
+-- Tiempo de generación: 24-11-2021 a las 00:20:33
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -31,6 +31,7 @@ CREATE TABLE `comentarios` (
   `id` int(11) NOT NULL,
   `texto` varchar(1000) NOT NULL,
   `puntaje` int(11) NOT NULL,
+  `fecha` date NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `id_gimnasta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -39,11 +40,11 @@ CREATE TABLE `comentarios` (
 -- Volcado de datos para la tabla `comentarios`
 --
 
-INSERT INTO `comentarios` (`id`, `texto`, `puntaje`, `id_usuario`, `id_gimnasta`) VALUES
-(5, 'El rey de las anillas Argento!', 2, 3, 4),
-(34, 'el mejor de todos el king!!', 9, 7, 1),
-(35, 'Aguante el king!!!', 8, 7, 1),
-(36, 'el gimnasta mas completo de todos los tiempos!', 9, 3, 1);
+INSERT INTO `comentarios` (`id`, `texto`, `puntaje`, `fecha`, `id_usuario`, `id_gimnasta`) VALUES
+(41, 'Siempre va a ser el mejor de todos!!', 5, '2021-11-07', 7, 1),
+(42, 'Aguante el king!!', 4, '2020-12-11', 7, 1),
+(43, 'Que lastima que se cayo en barra en Tokio!!', 3, '2021-11-07', 7, 1),
+(71, 'grande el king!', 5, '2021-11-23', 7, 1);
 
 --
 -- Índices para tablas volcadas
@@ -63,7 +64,7 @@ ALTER TABLE `comentarios`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
