@@ -14,7 +14,7 @@ Class ApiComentariosController{
 
     function obtenerComentarios($params = null){
         $id = $params[":ID"];
-        if(isset($_GET['sortBy']) && isset($_GET['orden'])){
+        if(isset($_GET['sortBy']) && isset($_GET['orden']) && !empty($_GET['sortBy']) && !empty($_GET['orden'])){
             $comentariosOrdenados = $this->model->obtenerComentariosOrdenados($_GET['sortBy'],$_GET['orden'],$id);
                 return $this->view->response($comentariosOrdenados,200); 
             
