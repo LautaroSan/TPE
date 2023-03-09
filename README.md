@@ -1,5 +1,5 @@
 # TPE
-Project developed using PHP in order to create a client-server architecture. The topic selected was a personal decision: i love gymnastics.
+This is a College Subject project developed using PHP in order to create a client-server architecture. The topic selected was a personal decision: i love gymnastics.
 Involves a back-end web server feauturing central routing according several endpoints(pretty url), register and login management, different views for different roles, 
 posting a comment and granting points.
 Some other features includes advanced filtering and sorting.
